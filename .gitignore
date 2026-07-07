@@ -1,0 +1,36 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env — never commit secrets
+.env
+.env*.local
+.env.local
+
+# raw WordPress export contains member emails / PII — keep out of git.
+# The derived, public catalog (data/*.json) IS committed.
+/wordpress-export/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
