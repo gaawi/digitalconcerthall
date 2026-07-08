@@ -1,6 +1,6 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { getConcerts } from "@/lib/concerts";
+import { ComposerCard } from "@/components/composer-card";
 
 export const metadata: Metadata = { title: "Composers" };
 
@@ -16,20 +16,14 @@ export default async function ComposersPage() {
   );
 
   return (
-    <div className="mx-auto max-w-content px-4 py-10 sm:px-6">
-      <h1 className="rule-gold font-serif text-3xl text-neutral-100">
-        Composers
-      </h1>
-      <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 lg:grid-cols-4">
+    <div className="px-4 pt-6">
+      <h1 className="px-1 text-[34px] font-bold text-white">Composers</h1>
+      <p className="px-1 pb-4 pt-1 text-[13px] text-neutral-400">
+        Explore concerts by composer
+      </p>
+      <div className="grid grid-cols-2 gap-[14px] sm:grid-cols-3 lg:grid-cols-4">
         {composers.map(([name, count]) => (
-          <Link
-            key={name}
-            href={`/?composer=${encodeURIComponent(name)}`}
-            className="flex items-baseline justify-between border-b border-white/5 py-2 text-neutral-300 transition hover:text-gold-400"
-          >
-            <span>{name}</span>
-            <span className="text-xs text-neutral-600">{count}</span>
-          </Link>
+          <ComposerCard key={name} name={name} count={count} />
         ))}
       </div>
     </div>

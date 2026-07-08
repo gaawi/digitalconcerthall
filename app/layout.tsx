@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { getCurrentUser } from "@/lib/auth";
+import { TabBar } from "@/components/tab-bar";
 
 export const metadata: Metadata = {
   title: {
@@ -13,18 +11,16 @@ export const metadata: Metadata = {
     "Exceptional classical and new music, presented with a crafted visual aesthetic. Stream on-demand performances in HD, 4K, and lossless audio.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getCurrentUser();
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
-        <SiteHeader user={user} />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+      <body className="min-h-screen">
+        <main className="mx-auto max-w-content pb-24">{children}</main>
+        <TabBar />
       </body>
     </html>
   );

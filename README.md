@@ -7,6 +7,11 @@ classical & new-music streaming site — on a modern, low-cost stack:
 - **Supabase** for auth (login / register / password reset) + Postgres catalog
 - **Video stays where it already is**: Bunny Stream (HLS), Vimeo, and YouTube.
   No video files are re-hosted, so there's no big storage/bandwidth bill.
+- **UI matches the CreArtBox iOS app** exactly — same gold palette
+  (`Theme.swift`), system fonts, bottom tab bar (Home / Search / Composers /
+  Playlists / Profile), "New" carousel, century filter chips, and per-century
+  carousels. Cards, the detail view, and composer grid mirror the SwiftUI
+  screens 1:1.
 
 The 54 concerts from the old site were migrated automatically from the
 WordPress export (`video_skrn` custom post type, Progression Studios theme).

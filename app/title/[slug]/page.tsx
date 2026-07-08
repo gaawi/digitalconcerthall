@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getConcertBySlug, getConcerts } from "@/lib/concerts";
+import { getConcertBySlug } from "@/lib/concerts";
 import { getCurrentUser } from "@/lib/auth";
 import { supabaseConfigured } from "@/lib/supabase/server";
+import { qualityBadge } from "@/lib/concert-utils";
 import { VideoPlayer } from "@/components/video-player";
+import { FavoriteButton } from "@/components/favorite-button";
+import { AboutSection } from "@/components/about-section";
 
-// Set to true to require an active membership to watch (gated).
-// Today the WordPress site only has a free membership, so we gate on being
-// logged in, not on payment. Flip GATE_REQUIRES_PAYMENT when you add plans.
 const GATE_REQUIRES_LOGIN = true;
 const GATE_REQUIRES_PAYMENT = false;
 
@@ -37,113 +37,110 @@ export default async function ConcertPage({
 
   const user = await getCurrentUser();
   const needsLogin = GATE_REQUIRES_LOGIN && !user;
-  const needsMembership =
-    GATE_REQUIRES_PAYMENT && (!user || !user.isMember);
-  // Before Supabase is connected the site runs in open "preview" mode so you
-  // can see the players working; gating activates automatically once auth is on.
+  const needsMembership = GATE_REQUIRES_PAYMENT && (!user || !user.isMember);
   const locked = supabaseConfigured && (needsLogin || needsMembership);
 
-  const related = (await getConcerts())
-    .filter(
-      (c) =>
-        c.slug !== concert.slug &&
-        c.composers.some((x) => concert.composers.includes(x))
-    )
-    .slice(0, 4);
-
-  const meta: [string, string[]][] = [
-    ["Composer", concert.composers],
-    ["Performers", concert.performers],
-    ["Instrumentation", concert.instruments],
-    ["Period", concert.periods],
-    ["Quality", concert.qualities],
-  ];
+  const badge = qualityBadge(concert);
+  const metaBadges = [
+    concert.instruments.length
+      ? { icon: "guitar", text: concert.instruments.join(", ") }
+      : null,
+    concert.periods.length ? { icon: "clock", text: concert.periods[0] } : null,
+    concert.release_date
+      ? { icon: "calendar", text: concert.release_date }
+      : null,
+  ].filter(Boolean) as { icon: string; text: string }[];
 
   return (
-    <div className="mx-auto max-w-content px-4 py-8 sm:px-6">
-      <Link
-        href="/"
-        className="mb-6 inline-block text-sm text-neutral-500 hover:text-gold-400"
-      >
-        ← Back to collection
-      </Link>
-
-      <div className="grid gap-10 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          {locked ? (
-            <LockedNotice needsMembership={needsMembership} slug={slug} />
-          ) : (
-            <VideoPlayer concert={concert} />
-          )}
-
-          <h1 className="mt-6 font-serif text-3xl text-neutral-50">
-            {concert.title}
-          </h1>
-          {concert.duration && (
-            <p className="mt-1 text-sm text-neutral-500">
-              {concert.duration}
-              {concert.release_date ? ` · ${concert.release_date}` : ""}
-            </p>
-          )}
-          {concert.description && (
-            <p className="mt-5 whitespace-pre-line leading-relaxed text-neutral-300">
-              {concert.description}
-            </p>
-          )}
-        </div>
-
-        <aside className="space-y-6">
-          <div className="rounded-xl border border-white/5 bg-ink-800/50 p-5">
-            <h2 className="rule-gold font-serif text-lg text-neutral-100">
-              Details
-            </h2>
-            <dl className="mt-6 space-y-4 text-sm">
-              {meta
-                .filter(([, vals]) => vals.length)
-                .map(([label, vals]) => (
-                  <div key={label}>
-                    <dt className="text-xs uppercase tracking-wide text-neutral-500">
-                      {label}
-                    </dt>
-                    <dd className="mt-1 text-neutral-300">
-                      {vals.join(", ")}
-                    </dd>
-                  </div>
-                ))}
-            </dl>
-          </div>
-        </aside>
+    <div>
+      {/* Top bar with gold back chevron (iOS navigation) */}
+      <div className="flex items-center px-4 py-3">
+        <Link href="/" aria-label="Back" className="text-gold">
+          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m15 6-6 6 6 6" />
+          </svg>
+        </Link>
       </div>
 
-      {related.length > 0 && (
-        <section className="mt-16">
-          <h2 className="rule-gold mb-8 font-serif text-xl text-neutral-100">
-            More from {concert.composers[0]}
-          </h2>
-          <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-            {related.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/title/${c.slug}`}
-                className="card-hover group"
-              >
-                <div className="aspect-video overflow-hidden rounded-lg bg-ink-700">
-                  {c.thumbnail_url && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={c.thumbnail_url}
-                      alt={c.title}
-                      className="h-full w-full object-cover transition group-hover:scale-105"
-                    />
-                  )}
-                </div>
-                <p className="clamp-2 mt-2 text-sm text-neutral-300 group-hover:text-gold-400">
-                  {c.title}
-                </p>
-              </Link>
-            ))}
+      {/* Player / hero */}
+      <div className="px-5">
+        {locked ? (
+          <LockedNotice needsMembership={needsMembership} slug={slug} />
+        ) : (
+          <div className="relative">
+            <VideoPlayer concert={concert} />
+            {badge && (
+              <span className="pointer-events-none absolute left-3 top-3 rounded-[6px] bg-black/60 px-[9px] py-1 text-[10px] font-bold text-white">
+                {badge}
+              </span>
+            )}
           </div>
-        </section>
+        )}
+      </div>
+
+      {/* Info header */}
+      <div className="flex items-start gap-3 px-5 pt-5">
+        <div className="min-w-0 flex-1">
+          <p className="text-[13px] font-medium text-gold">
+            {concert.composers.join(", ")}
+          </p>
+          <h1 className="pt-[6px] text-[20px] font-bold leading-tight text-white">
+            {concert.title}
+          </h1>
+        </div>
+        <FavoriteButton slug={concert.slug} size={22} />
+      </div>
+
+      {/* Performers */}
+      {concert.performers.length > 0 && (
+        <div className="px-5 pt-4">
+          <p className="text-[10px] font-semibold tracking-[1.5px] text-neutral-500">
+            PERFORMERS
+          </p>
+          <ul className="pt-[6px]">
+            {concert.performers.map((p) => (
+              <li key={p} className="flex items-center gap-2 py-[2px]">
+                <span className="h-1 w-1 rounded-full bg-gold/50" />
+                <span className="text-[14px] text-white/90">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Meta badges */}
+      {metaBadges.length > 0 && (
+        <div className="flex flex-wrap gap-[10px] px-5 pt-[14px]">
+          {metaBadges.map((b) => (
+            <span
+              key={b.icon + b.text}
+              className="clamp-1 rounded-lg bg-ink-800 px-[9px] py-[5px] text-[11px] text-neutral-400"
+            >
+              {b.text}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Divider */}
+      <div className="mx-5 my-4 h-px bg-neutral-500/20" />
+
+      {/* About */}
+      <AboutSection text={concert.description} />
+
+      {/* CTA */}
+      {!locked && (
+        <div className="px-5 pb-10">
+          <a
+            href="#top"
+            className="flex h-[50px] w-full items-center justify-center gap-2 rounded-[13px] bg-gradient-to-r from-gold via-gold-light to-gold text-[15px] font-semibold text-black"
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+              <path d="M6 4l14 8-14 8z" />
+            </svg>
+            {concert.video_type === "audio" ? "Listen" : "Watch concert"}
+          </a>
+        </div>
       )}
     </div>
   );
@@ -157,28 +154,26 @@ function LockedNotice({
   slug: string;
 }) {
   return (
-    <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 rounded-xl border border-gold-500/20 bg-ink-800/60 p-8 text-center">
-      <span className="font-serif text-4xl text-gold-500/60">♪</span>
-      <h2 className="font-serif text-xl text-neutral-100">
-        {needsMembership
-          ? "Members-only performance"
-          : "Sign in to watch"}
+    <div className="flex aspect-video w-full flex-col items-center justify-center gap-3 rounded-xl border border-gold/20 bg-ink-800 p-8 text-center">
+      <span className="text-4xl text-gold/60">𝄞</span>
+      <h2 className="text-lg font-semibold text-white">
+        {needsMembership ? "Members-only performance" : "Sign in to watch"}
       </h2>
       <p className="max-w-sm text-sm text-neutral-400">
         {needsMembership
-          ? "Become a member to stream the full CreArtBox collection in HD, 4K, and lossless audio."
+          ? "Become a member to stream the full CreArtBox collection."
           : "This performance is available to registered members. It's free to join."}
       </p>
       <div className="mt-2 flex gap-3">
         <Link
           href={`/login?next=/title/${slug}`}
-          className="rounded-full border border-white/15 px-5 py-2 text-sm text-neutral-200 hover:border-gold-500/60"
+          className="rounded-full border border-white/15 px-5 py-2 text-sm text-neutral-200"
         >
           Log in
         </Link>
         <Link
           href={`/register?next=/title/${slug}`}
-          className="rounded-full bg-gold-500 px-5 py-2 text-sm font-medium text-ink-950 hover:bg-gold-400"
+          className="rounded-full bg-gold px-5 py-2 text-sm font-medium text-black"
         >
           {needsMembership ? "Become a member" : "Join free"}
         </Link>

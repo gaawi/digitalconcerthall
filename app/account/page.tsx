@@ -1,56 +1,91 @@
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth";
 import { supabaseConfigured } from "@/lib/supabase/server";
+import { SignOutButton } from "@/components/sign-out-button";
 
-export const metadata = { title: "My Account" };
+export const metadata = { title: "Profile" };
 
-export default async function AccountPage() {
-  if (!supabaseConfigured) {
-    return (
-      <div className="mx-auto max-w-md px-4 py-20 text-center text-neutral-400">
-        <p>
-          Accounts activate once Supabase is connected. See the README to
-          finish setup.
-        </p>
-      </div>
-    );
-  }
-
-  const user = await getCurrentUser();
-  if (!user) redirect("/login?next=/account");
+export default async function ProfilePage() {
+  const user = supabaseConfigured ? await getCurrentUser() : null;
+  const name = user?.email ? user.email.split("@")[0] : null;
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16">
-      <h1 className="rule-gold font-serif text-3xl text-neutral-100">
-        My Account
-      </h1>
+    <div className="px-4 pt-6">
+      <h1 className="px-1 text-[34px] font-bold text-white">Profile</h1>
 
-      <div className="mt-10 rounded-xl border border-white/5 bg-ink-800/50 p-6">
-        <dl className="space-y-4 text-sm">
-          <div className="flex justify-between border-b border-white/5 pb-4">
-            <dt className="text-neutral-500">Email</dt>
-            <dd className="text-neutral-200">{user.email}</dd>
+      {!user ? (
+        <div className="flex flex-col items-center gap-4 pt-20 text-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gold/[0.12]">
+            <span className="text-4xl text-gold">𝄞</span>
           </div>
-          <div className="flex justify-between">
-            <dt className="text-neutral-500">Membership</dt>
-            <dd>
-              {user.isMember ? (
-                <span className="text-gold-400">Active</span>
-              ) : (
-                <span className="text-neutral-400">Free account</span>
-              )}
-            </dd>
+          <p className="text-neutral-300">
+            {supabaseConfigured
+              ? "Sign in to manage your account and saved concerts."
+              : "Accounts activate once Supabase is connected."}
+          </p>
+          {supabaseConfigured && (
+            <div className="flex gap-3 pt-1">
+              <Link
+                href="/login"
+                className="rounded-full border border-white/15 px-6 py-2 text-sm text-neutral-200"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/register"
+                className="rounded-full bg-gold px-6 py-2 text-sm font-medium text-black"
+              >
+                Join free
+              </Link>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="pt-6">
+          <div className="flex items-center gap-4 px-1">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gold/[0.12] text-2xl font-semibold uppercase text-gold">
+              {name?.[0] ?? "♪"}
+            </div>
+            <div>
+              <p className="text-[20px] font-semibold text-white">{name}</p>
+              <p className="text-[13px] text-neutral-400">{user.email}</p>
+            </div>
           </div>
-        </dl>
-      </div>
 
-      <Link
-        href="/"
-        className="mt-8 inline-block text-sm text-gold-400 hover:underline"
-      >
-        ← Browse the collection
-      </Link>
+          <div className="mt-8 overflow-hidden rounded-[14px] border border-gold/[0.08] bg-ink-700">
+            <Row label="Membership">
+              <span className={user.isMember ? "text-gold" : "text-neutral-400"}>
+                {user.isMember ? "Active" : "Free account"}
+              </span>
+            </Row>
+            <div className="h-px bg-white/5" />
+            <Row label="Saved">
+              <Link href="/playlists" className="text-gold">
+                View playlists
+              </Link>
+            </Row>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <SignOutButton />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Row({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-center justify-between px-4 py-4 text-[14px]">
+      <span className="text-neutral-400">{label}</span>
+      {children}
     </div>
   );
 }
