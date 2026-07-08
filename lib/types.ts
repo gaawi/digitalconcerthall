@@ -7,6 +7,11 @@ export type VideoType =
   | "embed"
   | "none";
 
+export interface AudioTrack {
+  title: string;
+  url: string;
+}
+
 export interface Concert {
   wp_id: number | null;
   title: string;
@@ -27,6 +32,7 @@ export interface Concert {
   qualities: string[];
   performers: string[];
   categories: string[];
+  audio_tracks: AudioTrack[];
   published: boolean;
 }
 

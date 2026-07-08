@@ -77,6 +77,34 @@ export function groupByCentury(
     .filter((s) => s.concerts.length > 0);
 }
 
+/** Detect a video source type + id from any pasted URL (for the editor). */
+export function detectVideo(url: string): { type: string; id: string } {
+  const u = (url || "").trim();
+  if (!u) return { type: "none", id: "" };
+  if (/\.m3u8(\?|$)/i.test(u) || /b-cdn\.net/i.test(u))
+    return { type: "hls", id: "" };
+  const yt = u.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{6,})/i
+  );
+  if (yt) return { type: "youtube", id: yt[1] };
+  const vimeo = u.match(/vimeo\.com\/(?:video\/)?(\d+)/i);
+  if (vimeo) return { type: "vimeo", id: vimeo[1] };
+  if (/\.mp4(\?|$)/i.test(u)) return { type: "mp4", id: "" };
+  if (/\.(mp3|wav|m4a|aac|flac)(\?|$)/i.test(u))
+    return { type: "audio", id: "" };
+  return { type: "embed", id: "" };
+}
+
+/** Slugify any string for a concert slug. */
+export function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 /** "New" row: most recent by release date. */
 export function newestConcerts(concerts: Concert[], n = 10): Concert[] {
   return [...concerts]

@@ -7,6 +7,21 @@ import taxonomiesJson from "@/data/taxonomies.json";
 const localConcerts = concertsJson as unknown as Concert[];
 const localTaxonomies = taxonomiesJson as unknown as Taxonomies;
 
+/** Ensure optional/array fields exist even if the DB predates a column. */
+function normalize(c: Concert): Concert {
+  return {
+    ...c,
+    audio_tracks: Array.isArray(c.audio_tracks) ? c.audio_tracks : [],
+    composers: c.composers ?? [],
+    instruments: c.instruments ?? [],
+    periods: c.periods ?? [],
+    nationalities: c.nationalities ?? [],
+    qualities: c.qualities ?? [],
+    performers: c.performers ?? [],
+    categories: c.categories ?? [],
+  };
+}
+
 /**
  * Fetch all published concerts. Reads from Supabase when configured, otherwise
  * falls back to the migrated local JSON so the site works before setup.
@@ -21,9 +36,10 @@ export async function getConcerts(): Promise<Concert[]> {
       .order("release_date", { ascending: false });
     // Fall back to local JSON on error OR before the table has been seeded,
     // so the site is never blank during setup.
-    if (!error && data && data.length) return data as Concert[];
+    if (!error && data && data.length)
+      return (data as Concert[]).map(normalize);
   }
-  return localConcerts.filter((c) => c.published);
+  return localConcerts.filter((c) => c.published).map(normalize);
 }
 
 export async function getConcertBySlug(
@@ -36,10 +52,11 @@ export async function getConcertBySlug(
       .select("*")
       .eq("slug", slug)
       .maybeSingle();
-    if (data) return data as Concert;
+    if (data) return normalize(data as Concert);
     // Not seeded yet — fall back to local JSON.
   }
-  return localConcerts.find((c) => c.slug === slug) ?? null;
+  const local = localConcerts.find((c) => c.slug === slug);
+  return local ? normalize(local) : null;
 }
 
 export async function getTaxonomies(): Promise<Taxonomies> {

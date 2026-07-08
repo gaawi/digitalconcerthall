@@ -64,6 +64,16 @@ export default async function ProfilePage() {
                 View playlists
               </Link>
             </Row>
+            {user.isAdmin && (
+              <>
+                <div className="h-px bg-white/5" />
+                <Row label="Catalog">
+                  <Link href="/admin" className="text-gold">
+                    Open editor
+                  </Link>
+                </Row>
+              </>
+            )}
           </div>
 
           <div className="mt-8 flex justify-center">

@@ -17,6 +17,7 @@ const arr = (a) =>
   `ARRAY[${(a || [])
     .map((x) => `'${String(x).replace(/'/g, "''")}'`)
     .join(",")}]::text[]`;
+const jsonb = (v) => `'${JSON.stringify(v ?? []).replace(/'/g, "''")}'::jsonb`;
 
 const cols = [
   "wp_id",
@@ -37,6 +38,7 @@ const cols = [
   "qualities",
   "performers",
   "categories",
+  "audio_tracks",
   "published",
 ];
 
@@ -61,6 +63,7 @@ const values = concerts
       arr(c.qualities),
       arr(c.performers),
       arr(c.categories),
+      jsonb(c.audio_tracks),
       c.published ? "true" : "false",
     ];
     return `  (${row.join(", ")})`;
@@ -91,6 +94,7 @@ on conflict (slug) do update set
   qualities = excluded.qualities,
   performers = excluded.performers,
   categories = excluded.categories,
+  audio_tracks = excluded.audio_tracks,
   published = excluded.published;
 `;
 

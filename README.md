@@ -50,12 +50,14 @@ members-only gating activates automatically.
 
 1. **Create the tables.** In your Supabase dashboard → **SQL Editor** → paste
    the contents of [`supabase/schema.sql`](supabase/schema.sql) → **Run**.
-   This creates `concerts`, `profiles`, `memberships`, Row-Level Security, and
-   a trigger that gives every new signup a free membership.
+   This creates `concerts`, `profiles`, `memberships`, `admins`, Row-Level
+   Security, and a trigger that gives every new signup a free membership.
+   It's **idempotent — safe to re-run** whenever the schema changes (e.g. the
+   `audio_tracks` column and editor policies were added this way).
 
 2. **Load the catalog.** New query → paste
    [`supabase/seed.sql`](supabase/seed.sql) → **Run**. That inserts all 54
-   concerts. (Re-runnable — it upserts on `slug`.)
+   concerts (with audio tracks). Re-runnable — it upserts on `slug`.
 
 3. **Add your keys** to `.env.local`:
 
@@ -97,6 +99,33 @@ node scripts/generate-seed-sql.mjs                            # -> supabase/seed
 ```
 
 ---
+
+## Editing the catalog (`/admin`)
+
+A built-in editor lets you add concerts, paste URLs, and tag everything —
+no code or SQL required.
+
+- Go to **`/admin`** (also linked from **Profile → Catalog → Open editor**).
+- Access is granted by email: any address in the `admins` table can edit.
+  `marketing@creartbox.nyc` is seeded by default; add more with
+  `insert into admins (email) values ('you@example.com');` in the SQL Editor.
+- **Add / edit a concert:** title, description, tags (composer, performers,
+  instrumentation, period, nationality, quality), thumbnail, duration, and
+  release date. Paste any **YouTube / Vimeo / Bunny `.m3u8` / mp3** link and
+  the player type is detected automatically.
+- **Audio tracks:** add title + URL rows to enable the Lossless Audio player
+  (and the Video ⇄ Audio toggle when a video also exists).
+- **Publish** toggles member visibility. Writes go straight to Supabase under
+  Row-Level Security — only admins can insert/update/delete.
+
+## Audio
+
+Concerts can carry multiple audio tracks (migrated from the WordPress
+`<li data-src>` blocks). The detail page adapts automatically:
+
+- **Audio only** → an Apple-Music-style "Now Playing" screen with tracklist.
+- **Video + audio** → a **Video / Lossless Audio** toggle.
+- **Video only** → the standard player.
 
 ## Known follow-ups
 

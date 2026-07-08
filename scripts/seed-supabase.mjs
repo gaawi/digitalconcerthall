@@ -69,6 +69,7 @@ const rows = concerts.map((c) => ({
   qualities: c.qualities,
   performers: c.performers,
   categories: c.categories,
+  audio_tracks: c.audio_tracks,
   published: c.published,
 }));
 

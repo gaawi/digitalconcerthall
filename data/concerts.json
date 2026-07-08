@@ -36,6 +36,7 @@
       "Yi Qun Xu, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2022/01/IMG_1280.jpg"
   },
@@ -74,6 +75,7 @@
       "Nathan Schram, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2022/01/09.jpg"
   },
@@ -108,6 +110,7 @@
       "Mari Lee, violin"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/Screen-Shot-2022-01-29-at-2.05.46-PM-scaled.jpg"
   },
@@ -143,6 +146,7 @@
       "Sarah K. Williams, visual Artist"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2022/01/Screen-Shot-2022-01-15-at-9.27.45-AM.jpg"
   },
@@ -179,6 +183,7 @@
       "Julia Yang, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2022/01/britten.jpg"
   },
@@ -222,6 +227,7 @@
       "Yi Qun Xu, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2022/01/003-2.jpg"
   },
@@ -257,6 +263,7 @@
       "Marieken Cochius, painter"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/IMG_1065.jpg"
   },
@@ -297,6 +304,12 @@
       "Nicholas Gallas, clarinet"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Just As They Are",
+        "url": "https://play.creartbox.nyc/wp-content/uploads/Just-as-they-are.mp3"
+      }
+    ],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/030-1.jpg"
   },
@@ -342,6 +355,12 @@
       "Yves Dharamraj, cello"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Coming Together",
+        "url": "https://play.creartbox.nyc/wp-content/uploads/Coming-Together-Live.wav"
+      }
+    ],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/004-1.jpg"
   },
@@ -381,6 +400,7 @@
       "Yves Dharamraj, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/18.jpg"
   },
@@ -419,6 +439,7 @@
       "Yves Dharamraj, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/07.jpg"
   },
@@ -456,6 +477,7 @@
       "Yi Qun Xu, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2021/08/IMG_1240-scaled.jpg"
   },
@@ -492,6 +514,7 @@
       "Josefina Urraca, piano"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC00857.jpg"
   },
@@ -532,6 +555,7 @@
       "Mari Lee, violin"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2022/01/004.jpg"
   },
@@ -566,6 +590,7 @@
       "Jane Yoon, harp"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/2022/01/Screen-Shot-2022-01-15-at-9.34.18-AM-scaled.jpg"
   },
@@ -604,6 +629,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/IMG_1046-1.jpg"
   },
@@ -638,6 +664,7 @@
       "Ranson Wilson, conductor"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/19.jpg"
   },
@@ -676,6 +703,7 @@
       "Julia Yang, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/019.jpg"
   },
@@ -719,6 +747,12 @@
       "Nicholas Gallas, clarinet"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Mariri",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audio/mariri.mp3"
+      }
+    ],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/313.jpg"
   },
@@ -761,6 +795,12 @@
       "Yves Dharamraj, cello"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Petroushskates",
+        "url": "https://play.creartbox.nyc/wp-content/uploads/Petroushkates.mp3"
+      }
+    ],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/016.jpg"
   },
@@ -800,6 +840,7 @@
       "Julia Yang, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/026.jpg"
   },
@@ -843,6 +884,7 @@
       "Nicholas Gallas, clarinet"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/005.jpg"
   },
@@ -880,6 +922,12 @@
       "Josefina Urraca, piano"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Sonata in B minor",
+        "url": "https://play.creartbox.nyc/wp-content/uploads/DuoH-Respighi_I-Edit1-161018.wav"
+      }
+    ],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/CD100_out.jpg"
   },
@@ -904,6 +952,7 @@
     "qualities": [],
     "performers": [],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": ""
   },
@@ -947,6 +996,12 @@
       "Yves Dharamraj, cello"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Noctum Concerto for flute and clarinet",
+        "url": "https://play.creartbox.nyc/wp-content/uploads/Marcos-Fernandez-Flute-clarinet-concierto-remastered-2022.wav"
+      }
+    ],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/013.jpg"
   },
@@ -981,6 +1036,12 @@
       "Tagore Gonzalez, clarinet"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Sonata for clarinet, flute and piano",
+        "url": "https://play.creartbox.nyc/wp-content/uploads/3.EMMANUEL-3.wav"
+      }
+    ],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/IMG_2667-scaled.jpg"
   },
@@ -1019,6 +1080,7 @@
       "Josefina Urraca, piano"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/deb.jpg"
   },
@@ -1055,6 +1117,7 @@
       "Robert Sirvent, video Artist"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/004-2.jpg"
   },
@@ -1089,6 +1152,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC05239.jpg"
   },
@@ -1125,6 +1189,7 @@
       "Yi Qun Xu, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC05439.jpg"
   },
@@ -1149,6 +1214,7 @@
     "qualities": [],
     "performers": [],
     "categories": [],
+    "audio_tracks": [],
     "published": false,
     "thumbnail_url": ""
   },
@@ -1189,6 +1255,40 @@
       "Mari Lee, violin"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "I – Crystal liturgy",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/01%20Crystal%20liturgy.mp3"
+      },
+      {
+        "title": "II – Vocalise, for the Angel",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/02%20Vocalise%2C%20for%20the%20Angel%20who%20announces%20the%20end%20of%20time.mp3"
+      },
+      {
+        "title": "III – Abyss of birds",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/03%20Abyss%20of%20birds.mp3"
+      },
+      {
+        "title": "IV – Interlude",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/04%20Interlude.mp3"
+      },
+      {
+        "title": "V – Praise to the eternity of Jesus",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/05%20Praise%20to%20the%20eternity%20of%20Jesus.mp3"
+      },
+      {
+        "title": "VI – Dance of fury",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/06%20Dance%20of%20fury%2C%20for%20the%20seven%20trumpets.mp3"
+      },
+      {
+        "title": "VII – Tangle of rainbows",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/07%20Tangle%20of%20rainbows%2C%20for%20the%20Angel%20who%20announces%20the%20end%20of%20time.mp3"
+      },
+      {
+        "title": "VIII – Praise to the immortality of Jesus",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/audios/20190830/08%20Praise%20to%20the%20immortality%20of%20Jesus.mp3"
+      }
+    ],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/ADS_0835.jpg"
   },
@@ -1227,6 +1327,7 @@
       "Julia Yang, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/003.jpg"
   },
@@ -1263,6 +1364,7 @@
       "Yi Qun Xu, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/004-3.jpg"
   },
@@ -1301,6 +1403,7 @@
       "Yi Qun Xu, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/008.jpg"
   },
@@ -1337,6 +1440,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC05211-scaled.jpg"
   },
@@ -1373,6 +1477,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC05267-scaled.jpg"
   },
@@ -1411,6 +1516,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC05348-scaled.jpg"
   },
@@ -1450,6 +1556,7 @@
       "visual artist"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/Part-3-Main-Edit-1.jpg"
   },
@@ -1495,6 +1602,7 @@
       "Sarah K. Williams, visual Artist"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC00357-2.jpg"
   },
@@ -1532,6 +1640,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/056-scaled.jpg"
   },
@@ -1571,6 +1680,7 @@
       "Mélanie Clapiès, violin"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/10.jpg"
   },
@@ -1604,6 +1714,7 @@
       "Josefina Urraca, piano"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/085-scaled.jpg"
   },
@@ -1642,6 +1753,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/002-3.jpg"
   },
@@ -1684,6 +1796,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/circlenoirphoto2.jpg"
   },
@@ -1720,6 +1833,7 @@
       "Julia Yang, cello"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/kadish.jpg"
   },
@@ -1761,6 +1875,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/pictures2.jpg"
   },
@@ -1805,6 +1920,7 @@
       "visual artist"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/004-4.jpg"
   },
@@ -1846,6 +1962,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/002.jpg"
   },
@@ -1887,6 +2004,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/495392654_1316810157117922_6079046438971270533_n.jpg"
   },
@@ -1925,6 +2043,24 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "Dvorak – String Quartet No.12 \r\n    I. Allegro ma non troppo",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20241211/audio/07DvorakI.mp3"
+      },
+      {
+        "title": "Dvorak – String Quartet No.12 \r\n    II. Lento",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20241211/audio/08DvorakII.mp3"
+      },
+      {
+        "title": "Dvorak – String Quartet No.12 \r\n    III. Molto vivace — Trio",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20241211/audio/09DvorakIII.mp3"
+      },
+      {
+        "title": "Dvorak – String Quartet No.12 \r\n    IV. Finale. Vivace ma non troppo",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20241211/audio/10DvorakIV.mp3"
+      }
+    ],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/IMG_3176-scaled.png"
   },
@@ -1962,6 +2098,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/04.jpg"
   },
@@ -2005,6 +2142,32 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [
+      {
+        "title": "I. Allegro con spirito",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20251212/audio/02%20ligeti%2001%20(audio).mp3"
+      },
+      {
+        "title": "II. Rubato lamentoso",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20251212/audio/02%20ligeti%2002%20(audio).mp3"
+      },
+      {
+        "title": "III. Allegro grazioso",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20251212/audio/02%20ligeti%2003%20(audio).mp3"
+      },
+      {
+        "title": "IV. Presto ruvido",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20251212/audio/02%20ligeti%2004%20(audio).mp3"
+      },
+      {
+        "title": "V. Adagio mesto. Béla Bartók in memoriam",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20251212/audio/02%20ligeti%2005%20(audio).mp3"
+      },
+      {
+        "title": "VI. Molto vivace, capriccioso",
+        "url": "https://creartbox-media-cdn.b-cdn.net/webimg/projects_photos/20251212/audio/02%20ligeti%2006%20(audio).mp3"
+      }
+    ],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/MG_0161.jpg"
   },
@@ -2046,6 +2209,7 @@
       "Matthew Cohen, viola"
     ],
     "categories": [],
+    "audio_tracks": [],
     "published": true,
     "thumbnail_url": "https://play.creartbox.nyc/wp-content/uploads/DSC0028-scaled.jpg"
   }

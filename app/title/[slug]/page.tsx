@@ -4,8 +4,7 @@ import type { Metadata } from "next";
 import { getConcertBySlug } from "@/lib/concerts";
 import { getCurrentUser } from "@/lib/auth";
 import { supabaseConfigured } from "@/lib/supabase/server";
-import { qualityBadge } from "@/lib/concert-utils";
-import { VideoPlayer } from "@/components/video-player";
+import { MediaSection } from "@/components/media-section";
 import { FavoriteButton } from "@/components/favorite-button";
 import { AboutSection } from "@/components/about-section";
 
@@ -40,7 +39,6 @@ export default async function ConcertPage({
   const needsMembership = GATE_REQUIRES_PAYMENT && (!user || !user.isMember);
   const locked = supabaseConfigured && (needsLogin || needsMembership);
 
-  const badge = qualityBadge(concert);
   const metaBadges = [
     concert.instruments.length
       ? { icon: "guitar", text: concert.instruments.join(", ") }
@@ -67,14 +65,7 @@ export default async function ConcertPage({
         {locked ? (
           <LockedNotice needsMembership={needsMembership} slug={slug} />
         ) : (
-          <div className="relative">
-            <VideoPlayer concert={concert} />
-            {badge && (
-              <span className="pointer-events-none absolute left-3 top-3 rounded-[6px] bg-black/60 px-[9px] py-1 text-[10px] font-bold text-white">
-                {badge}
-              </span>
-            )}
-          </div>
+          <MediaSection concert={concert} />
         )}
       </div>
 
@@ -128,20 +119,7 @@ export default async function ConcertPage({
       {/* About */}
       <AboutSection text={concert.description} />
 
-      {/* CTA */}
-      {!locked && (
-        <div className="px-5 pb-10">
-          <a
-            href="#top"
-            className="flex h-[50px] w-full items-center justify-center gap-2 rounded-[13px] bg-gradient-to-r from-gold via-gold-light to-gold text-[15px] font-semibold text-black"
-          >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-              <path d="M6 4l14 8-14 8z" />
-            </svg>
-            {concert.video_type === "audio" ? "Listen" : "Watch concert"}
-          </a>
-        </div>
-      )}
+      <div className="pb-10" />
     </div>
   );
 }

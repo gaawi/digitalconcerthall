@@ -5,6 +5,7 @@ export interface CurrentUser {
   id: string;
   email: string | null;
   isMember: boolean;
+  isAdmin: boolean;
 }
 
 /**
@@ -21,16 +22,20 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
   } = await supabase.auth.getUser();
   if (!user) return null;
 
-  const { data: membership } = await supabase
-    .from("memberships")
-    .select("status")
-    .eq("user_id", user.id)
-    .eq("status", "active")
-    .maybeSingle();
+  const [{ data: membership }, { data: adminRow }] = await Promise.all([
+    supabase
+      .from("memberships")
+      .select("status")
+      .eq("user_id", user.id)
+      .eq("status", "active")
+      .maybeSingle(),
+    supabase.from("admins").select("email").maybeSingle(),
+  ]);
 
   return {
     id: user.id,
     email: user.email ?? null,
     isMember: !!membership,
+    isAdmin: !!adminRow,
   };
 }

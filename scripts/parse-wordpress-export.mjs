@@ -97,6 +97,33 @@ function videoSource(meta) {
   }
 }
 
+// Decode the handful of HTML entities WordPress emits in titles.
+const decodeEntities = (s) =>
+  s
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#8217;|&#8216;|&#039;|&#39;/g, "'")
+    .replace(/&#8230;|&hellip;/g, "…")
+    .replace(/&#8211;|&ndash;/g, "–")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .trim();
+
+// Extract audio tracks from the WP content HTML: <li data-src="url">Title</li>
+// (mirrors the iOS Concert.parseAudioTracks).
+function parseAudioTracks(html) {
+  if (!html) return [];
+  const re = /data-src=["']([^"']+)["'][^>]*>([\s\S]*?)<\/li>/g;
+  const out = [];
+  let m;
+  while ((m = re.exec(html))) {
+    const url = m[1].trim();
+    const title = decodeEntities(m[2].replace(/<[^>]+>/g, "")).trim();
+    if (url && title) out.push({ title, url });
+  }
+  return out;
+}
+
 const slugify = (s) =>
   s
     .toLowerCase()
@@ -156,6 +183,12 @@ for (const item of items) {
   const content = tag(item, "content:encoded");
   const excerpt = tag(item, "excerpt:encoded");
 
+  // Audio tracks embedded in content; fall back to a single-file audio source.
+  let audioTracks = parseAudioTracks(content);
+  if (audioTracks.length === 0 && src.type === "audio" && src.url) {
+    audioTracks = [{ title, url: src.url }];
+  }
+
   concerts.push({
     wp_id: Number(tag(item, "wp:post_id")) || null,
     title,
@@ -175,6 +208,7 @@ for (const item of items) {
     qualities,
     performers,
     categories: otherCats,
+    audio_tracks: audioTracks,
     published: tag(item, "wp:status") === "publish",
   });
 
