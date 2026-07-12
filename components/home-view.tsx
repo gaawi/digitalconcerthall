@@ -11,6 +11,7 @@ import {
 import { HeroCard, ConcertCard, ConcertRow } from "./concert-cards";
 import { CenturyChips } from "./century-chips";
 import { FeaturedHero } from "./featured-hero";
+import { Carousel } from "./carousel";
 
 export function HomeView({ concerts }: { concerts: Concert[] }) {
   const [category, setCategory] = useState<CenturyKey>("all");
@@ -33,11 +34,11 @@ export function HomeView({ concerts }: { concerts: Concert[] }) {
       {newest.length > 0 && (
         <section className="pb-[30px] pt-6">
           <SectionHeader title="New" sparkles />
-          <div className="no-scrollbar flex gap-[14px] overflow-x-auto px-5 py-2 sm:gap-5">
+          <Carousel>
             {newest.map((c) => (
               <HeroCard key={c.slug} concert={c} />
             ))}
-          </div>
+          </Carousel>
         </section>
       )}
 
@@ -51,11 +52,11 @@ export function HomeView({ concerts }: { concerts: Concert[] }) {
         sections.map((section) => (
           <section key={section.key} className="pb-7">
             <SectionHeader title={section.label} />
-            <div className="no-scrollbar flex gap-[14px] overflow-x-auto px-5 py-2 sm:gap-5">
+            <Carousel>
               {section.concerts.map((c) => (
                 <ConcertCard key={c.slug} concert={c} />
               ))}
-            </div>
+            </Carousel>
           </section>
         ))
       ) : filtered.length === 0 ? (

@@ -6,7 +6,7 @@ export function AboutSection({ text }: { text: string }) {
   const [expanded, setExpanded] = useState(false);
   if (!text) return null;
   return (
-    <div className="px-5 pb-5">
+    <div className="pb-5">
       <p className="text-[10px] font-semibold tracking-[1.5px] text-neutral-500">
         ABOUT THE CONCERT
       </p>

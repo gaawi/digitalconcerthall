@@ -52,75 +52,94 @@ export default async function ConcertPage({
 
   return (
     <div>
-      {/* Top bar with gold back chevron (iOS navigation) */}
-      <div className="flex items-center px-4 py-3">
-        <Link href="/" aria-label="Back" className="text-gold">
-          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m15 6-6 6 6 6" />
-          </svg>
-        </Link>
-      </div>
-
-      {/* Player / hero */}
-      <div className="px-5">
-        {locked ? (
-          <LockedNotice needsMembership={needsMembership} slug={slug} />
-        ) : (
-          <MediaSection concert={concert} />
+      {/* ── Cinematic hero: blurred backdrop with the player floating on top ── */}
+      <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen overflow-hidden">
+        {/* Blurred backdrop of this concert */}
+        {concert.thumbnail_url && (
+          <div className="absolute inset-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={concert.thumbnail_url}
+              alt=""
+              className="h-full w-full scale-110 object-cover opacity-40 blur-2xl"
+            />
+          </div>
         )}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-900/70 via-ink-900/60 to-ink-900" />
+
+        <div className="relative mx-auto max-w-content px-4 pb-8 pt-4 sm:px-8">
+          {/* Back */}
+          <Link
+            href="/"
+            aria-label="Back"
+            className="mb-4 inline-flex items-center gap-1 text-sm text-gold hover:text-gold-light"
+          >
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m15 6-6 6 6 6" />
+            </svg>
+          </Link>
+
+          {/* Player, centered and framed */}
+          <div className="mx-auto max-w-4xl">
+            {locked ? (
+              <LockedNotice needsMembership={needsMembership} slug={slug} />
+            ) : (
+              <MediaSection concert={concert} />
+            )}
+          </div>
+
+          {/* Title block */}
+          <div className="mx-auto flex max-w-4xl items-start gap-3 pt-6">
+            <div className="min-w-0 flex-1">
+              <p className="text-[13px] font-medium text-gold sm:text-[15px]">
+                {concert.composers.join(", ")}
+              </p>
+              <h1 className="pt-1.5 text-2xl font-bold leading-tight text-white sm:text-4xl">
+                {concert.title}
+              </h1>
+              {metaBadges.length > 0 && (
+                <div className="flex flex-wrap gap-2 pt-4">
+                  {metaBadges.map((b) => (
+                    <span
+                      key={b.icon + b.text}
+                      className="clamp-1 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-neutral-300 backdrop-blur sm:text-[12px]"
+                    >
+                      {b.text}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <FavoriteButton slug={concert.slug} size={24} framed />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Details ── */}
+      <div className="mx-auto max-w-4xl px-4 sm:px-8">
+        {concert.performers.length > 0 && (
+          <div className="pt-8">
+            <p className="text-[10px] font-semibold tracking-[1.5px] text-neutral-500">
+              PERFORMERS
+            </p>
+            <ul className="grid grid-cols-1 gap-x-8 pt-3 sm:grid-cols-2">
+              {concert.performers.map((p) => (
+                <li key={p} className="flex items-center gap-2 py-1">
+                  <span className="h-1 w-1 rounded-full bg-gold/50" />
+                  <span className="text-[14px] text-white/90 sm:text-[15px]">
+                    {p}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className="my-6 h-px bg-neutral-500/20" />
+
+        <AboutSection text={concert.description} />
+        <div className="pb-16" />
       </div>
-
-      {/* Info header */}
-      <div className="flex items-start gap-3 px-5 pt-5">
-        <div className="min-w-0 flex-1">
-          <p className="text-[13px] font-medium text-gold">
-            {concert.composers.join(", ")}
-          </p>
-          <h1 className="pt-[6px] text-[20px] font-bold leading-tight text-white">
-            {concert.title}
-          </h1>
-        </div>
-        <FavoriteButton slug={concert.slug} size={22} />
-      </div>
-
-      {/* Performers */}
-      {concert.performers.length > 0 && (
-        <div className="px-5 pt-4">
-          <p className="text-[10px] font-semibold tracking-[1.5px] text-neutral-500">
-            PERFORMERS
-          </p>
-          <ul className="pt-[6px]">
-            {concert.performers.map((p) => (
-              <li key={p} className="flex items-center gap-2 py-[2px]">
-                <span className="h-1 w-1 rounded-full bg-gold/50" />
-                <span className="text-[14px] text-white/90">{p}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Meta badges */}
-      {metaBadges.length > 0 && (
-        <div className="flex flex-wrap gap-[10px] px-5 pt-[14px]">
-          {metaBadges.map((b) => (
-            <span
-              key={b.icon + b.text}
-              className="clamp-1 rounded-lg bg-ink-800 px-[9px] py-[5px] text-[11px] text-neutral-400"
-            >
-              {b.text}
-            </span>
-          ))}
-        </div>
-      )}
-
-      {/* Divider */}
-      <div className="mx-5 my-4 h-px bg-neutral-500/20" />
-
-      {/* About */}
-      <AboutSection text={concert.description} />
-
-      <div className="pb-10" />
     </div>
   );
 }

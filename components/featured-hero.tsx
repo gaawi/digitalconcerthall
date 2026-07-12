@@ -51,6 +51,32 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/45 to-ink-900/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/25 to-transparent" />
 
+        {/* Prev / next arrows (desktop) */}
+        {slides.length > 1 && (
+          <>
+            <button
+              type="button"
+              aria-label="Previous"
+              onClick={() => setI((n) => (n - 1 + slides.length) % slides.length)}
+              className="absolute left-3 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-white backdrop-blur transition hover:bg-ink-950/80 sm:flex"
+            >
+              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m15 6-6 6 6 6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Next"
+              onClick={() => setI((n) => (n + 1) % slides.length)}
+              className="absolute right-3 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-white backdrop-blur transition hover:bg-ink-950/80 sm:flex"
+            >
+              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m9 6 6 6-6 6" />
+              </svg>
+            </button>
+          </>
+        )}
+
         {/* Brand */}
         <div className="absolute inset-x-0 top-0 px-5 pt-4 sm:px-10">
           <Logo className="h-9 sm:h-11" />
