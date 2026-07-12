@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createClient, supabaseConfigured } from "@/lib/supabase/client";
+import { Logo } from "./logo";
 
 type Mode = "login" | "register" | "reset";
 
@@ -78,9 +79,10 @@ export function AuthForm({ mode }: { mode: Mode }) {
 
   return (
     <div className="mx-auto max-w-md px-4 py-16">
-      <h1 className="rule-gold font-serif text-2xl text-neutral-100">
-        {copy.title}
-      </h1>
+      <div className="pb-8">
+        <Logo markClass="h-11 w-11" />
+      </div>
+      <h1 className="text-2xl font-semibold text-white">{copy.title}</h1>
 
       <form onSubmit={onSubmit} className="mt-10 space-y-4">
         <div>

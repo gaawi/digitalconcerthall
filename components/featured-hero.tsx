@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Concert } from "@/lib/types";
 import { qualityBadge } from "@/lib/concert-utils";
+import { Logo } from "./logo";
 
 /** Full-bleed, Netflix-style hero for the top of the home page. */
 export function FeaturedHero({ concert }: { concert: Concert }) {
@@ -25,13 +26,8 @@ export function FeaturedHero({ concert }: { concert: Concert }) {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/25 to-transparent" />
 
         {/* Brand bar */}
-        <div className="absolute inset-x-0 top-0 flex items-center gap-3 px-5 pt-5 sm:px-8">
-          <span className="text-lg font-semibold tracking-wide text-gold">
-            CreArtBox
-          </span>
-          <span className="hidden text-[11px] uppercase tracking-[0.25em] text-white/50 sm:inline">
-            Digital Concert Hall
-          </span>
+        <div className="absolute inset-x-0 top-0 px-5 pt-4 sm:px-8">
+          <Logo markClass="h-9 w-9" />
         </div>
 
         {/* Content */}
