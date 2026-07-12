@@ -324,51 +324,103 @@ function TagField({
 }) {
   const [text, setText] = useState("");
   const listId = `tags-${label.replace(/\s/g, "")}`;
-  function add(v: string) {
-    const t = v.trim();
-    if (t && !values.includes(t)) onChange([...values, t]);
+
+  // Add one or more tags (comma-separated). New tags are always allowed —
+  // suggestions are only autocomplete, never a restriction.
+  function add(raw: string) {
+    const parts = raw
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (parts.length) {
+      const next = [...values];
+      for (const p of parts) {
+        if (!next.some((x) => x.toLowerCase() === p.toLowerCase())) next.push(p);
+      }
+      onChange(next);
+    }
     setText("");
   }
+
+  // Existing tags across the whole catalog that this concert doesn't have yet —
+  // one tap to reuse them.
+  const quick = suggestions
+    .filter((s) => !values.some((v) => v.toLowerCase() === s.toLowerCase()))
+    .slice(0, 12);
+
   return (
     <div>
       <label className="mb-1 block text-xs uppercase tracking-wide text-neutral-500">
         {label}
       </label>
-      <div className="flex flex-wrap gap-2 pb-2">
-        {values.map((v) => (
-          <span
-            key={v}
-            className="flex items-center gap-1 rounded-full bg-gold/15 px-3 py-1 text-[12px] text-gold"
-          >
-            {v}
-            <button
-              onClick={() => onChange(values.filter((x) => x !== v))}
-              className="text-gold/70"
+
+      {/* Selected tags */}
+      {values.length > 0 && (
+        <div className="flex flex-wrap gap-2 pb-2">
+          {values.map((v) => (
+            <span
+              key={v}
+              className="flex items-center gap-1 rounded-full bg-gold/15 px-3 py-1 text-[12px] text-gold"
             >
-              ×
-            </button>
-          </span>
-        ))}
+              {v}
+              <button
+                type="button"
+                onClick={() => onChange(values.filter((x) => x !== v))}
+                className="text-gold/70"
+                aria-label={`Remove ${v}`}
+              >
+                ×
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Input + explicit Add button — type anything new, or pick a suggestion */}
+      <div className="flex gap-2">
+        <input
+          list={listId}
+          className={inputCls + " flex-1"}
+          value={text}
+          placeholder="Add a tag — new or existing"
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === ",") {
+              e.preventDefault();
+              add(text);
+            }
+          }}
+          onBlur={() => text && add(text)}
+        />
+        <button
+          type="button"
+          onClick={() => add(text)}
+          className="shrink-0 rounded-md border border-gold/40 px-4 text-sm text-gold"
+        >
+          Add
+        </button>
       </div>
-      <input
-        list={listId}
-        className={inputCls}
-        value={text}
-        placeholder="Type and press Enter…"
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            add(text);
-          }
-        }}
-        onBlur={() => text && add(text)}
-      />
       <datalist id={listId}>
         {suggestions.map((s) => (
           <option key={s} value={s} />
         ))}
       </datalist>
+
+      {/* One-tap reuse of existing tags */}
+      {quick.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 pt-2">
+          {quick.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => add(s)}
+              className="rounded-full border border-white/10 px-2.5 py-0.5 text-[11px] text-neutral-400 hover:border-gold/40 hover:text-gold"
+            >
+              + {s}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
