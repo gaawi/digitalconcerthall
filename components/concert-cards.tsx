@@ -4,15 +4,15 @@ import { qualityBadge } from "@/lib/concert-utils";
 
 const CLEF = "𝄞";
 
-/** Hero card — the "New" carousel (240×140), mirrors iOS HeroCard. */
+/** Hero card — the "New" carousel. Mobile ~240px, larger + zoom on desktop. */
 export function HeroCard({ concert }: { concert: Concert }) {
   const badge = qualityBadge(concert);
   return (
     <Link
       href={`/title/${concert.slug}`}
-      className="block w-[240px] shrink-0"
+      className="group block w-[240px] shrink-0 sm:w-[340px] lg:w-[400px]"
     >
-      <div className="relative h-[140px] w-[240px] overflow-hidden rounded-xl bg-ink-800">
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-ink-800 shadow-lg shadow-black/30 ring-0 ring-gold/50 transition duration-300 group-hover:scale-[1.04] group-hover:ring-2">
         {concert.thumbnail_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -26,18 +26,20 @@ export function HeroCard({ concert }: { concert: Concert }) {
         )}
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/70 to-transparent" />
         {badge && (
-          <span className="absolute right-2 top-2 rounded-[5px] bg-black/60 px-[7px] py-[3px] text-[9px] font-bold text-white">
+          <span className="absolute right-2 top-2 rounded-[5px] bg-black/60 px-[7px] py-[3px] text-[10px] font-bold text-white">
             {badge}
           </span>
         )}
       </div>
       <div className="pt-[10px]">
-        <p className="clamp-1 text-[11px] text-gold">{concert.composers[0]}</p>
-        <p className="clamp-2 pt-[2px] text-[13px] font-semibold leading-tight text-white">
+        <p className="clamp-1 text-[11px] text-gold sm:text-[13px]">
+          {concert.composers[0]}
+        </p>
+        <p className="clamp-2 pt-[2px] text-[13px] font-semibold leading-tight text-white sm:text-[15px]">
           {concert.title}
         </p>
         {concert.performers[0] && (
-          <p className="clamp-1 pt-[2px] text-[10px] text-neutral-400">
+          <p className="clamp-1 pt-[2px] text-[10px] text-neutral-400 sm:text-[12px]">
             {concert.performers.join("  |  ")}
           </p>
         )}
@@ -46,12 +48,15 @@ export function HeroCard({ concert }: { concert: Concert }) {
   );
 }
 
-/** Century-section card (200×118), mirrors iOS ConcertCard. */
+/** Century-section card. Mobile ~200px, larger + zoom on desktop. */
 export function ConcertCard({ concert }: { concert: Concert }) {
   const badge = qualityBadge(concert);
   return (
-    <Link href={`/title/${concert.slug}`} className="block w-[200px] shrink-0">
-      <div className="relative h-[118px] w-[200px] overflow-hidden rounded-[10px] bg-ink-800">
+    <Link
+      href={`/title/${concert.slug}`}
+      className="group block w-[200px] shrink-0 sm:w-[280px] lg:w-[320px]"
+    >
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-ink-800 shadow-lg shadow-black/30 ring-0 ring-gold/50 transition duration-300 group-hover:scale-[1.04] group-hover:ring-2">
         {concert.thumbnail_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -64,14 +69,16 @@ export function ConcertCard({ concert }: { concert: Concert }) {
           <Placeholder />
         )}
         {badge && (
-          <span className="absolute bottom-[6px] right-[6px] rounded-[5px] bg-black/[0.65] px-[6px] py-[3px] text-[9px] font-bold text-white">
+          <span className="absolute bottom-[6px] right-[6px] rounded-[5px] bg-black/[0.65] px-[6px] py-[3px] text-[10px] font-bold text-white">
             {badge}
           </span>
         )}
       </div>
       <div className="pt-2">
-        <p className="clamp-1 text-[10px] text-gold">{concert.composers[0]}</p>
-        <p className="clamp-2 pt-[2px] text-[12px] font-semibold leading-tight text-white">
+        <p className="clamp-1 text-[10px] text-gold sm:text-[12px]">
+          {concert.composers[0]}
+        </p>
+        <p className="clamp-2 pt-[2px] text-[12px] font-semibold leading-tight text-white sm:text-[14px]">
           {concert.title}
         </p>
       </div>

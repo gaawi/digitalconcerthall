@@ -15,10 +15,7 @@ import { FeaturedHero } from "./featured-hero";
 export function HomeView({ concerts }: { concerts: Concert[] }) {
   const [category, setCategory] = useState<CenturyKey>("all");
 
-  const featured = useMemo(
-    () => newestConcerts(concerts, 1)[0],
-    [concerts]
-  );
+  const featured = useMemo(() => newestConcerts(concerts, 6), [concerts]);
   const newest = useMemo(() => newestConcerts(concerts, 10), [concerts]);
   const sections = useMemo(() => groupByCentury(concerts), [concerts]);
   const filtered = useMemo(() => {
@@ -29,14 +26,14 @@ export function HomeView({ concerts }: { concerts: Concert[] }) {
 
   return (
     <div>
-      {/* Netflix-style featured hero */}
-      {featured && <FeaturedHero concert={featured} />}
+      {/* Auto-rotating Apple-TV-style hero */}
+      {featured.length > 0 && <FeaturedHero concerts={featured} />}
 
       {/* New carousel */}
       {newest.length > 0 && (
         <section className="pb-[30px] pt-6">
           <SectionHeader title="New" sparkles />
-          <div className="no-scrollbar flex gap-[14px] overflow-x-auto px-5">
+          <div className="no-scrollbar flex gap-[14px] overflow-x-auto px-5 py-2 sm:gap-5">
             {newest.map((c) => (
               <HeroCard key={c.slug} concert={c} />
             ))}
@@ -54,7 +51,7 @@ export function HomeView({ concerts }: { concerts: Concert[] }) {
         sections.map((section) => (
           <section key={section.key} className="pb-7">
             <SectionHeader title={section.label} />
-            <div className="no-scrollbar flex gap-[14px] overflow-x-auto px-5">
+            <div className="no-scrollbar flex gap-[14px] overflow-x-auto px-5 py-2 sm:gap-5">
               {section.concerts.map((c) => (
                 <ConcertCard key={c.slug} concert={c} />
               ))}

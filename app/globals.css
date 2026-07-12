@@ -30,6 +30,32 @@ body {
   display: none;
 }
 
+/* Apple-TV-style hero transitions */
+@keyframes cabfade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadein {
+  animation: cabfade 0.8s ease both;
+}
+@keyframes cabken {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+.animate-kenburns {
+  animation: cabken 8s ease-out both;
+}
+
 /* Line clamp helpers */
 .clamp-1 {
   display: -webkit-box;

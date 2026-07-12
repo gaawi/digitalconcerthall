@@ -80,7 +80,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
   return (
     <div className="mx-auto max-w-md px-4 py-16">
       <div className="pb-8">
-        <Logo markClass="h-11 w-11" />
+        <Logo className="h-11" />
       </div>
       <h1 className="text-2xl font-semibold text-white">{copy.title}</h1>
 
