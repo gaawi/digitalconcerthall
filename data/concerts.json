@@ -937,7 +937,7 @@
     "wp_id": 1442,
     "title": "Awave",
     "slug": "awave",
-    "description": "Performed live by CreArtBox as part of the CreArt Music Festival.",
+    "description": "Awave is a multimedia suite for flute, piano, electronics and video by Guillermo Laporta, the Spanish flutist-composer and co-founder of CreArtBox. Composed in 2018–2019 and gathering nine original pieces, it draws on Laporta’s travels across Europe, weaving symphonic color, chamber intimacy, theatrical sound design and a film-score sensibility together with his own words and images. First presented in Tokyo and New York, Awave is a signature example of CreArtBox’s “visual concert” — live performance fused with electronics and projected art.",
     "video_type": "none",
     "video_url": "",
     "video_id": "",
@@ -945,11 +945,15 @@
     "duration": "",
     "release_date": "",
     "original_link": "",
-    "composers": [],
+    "composers": [
+      "Guillermo Laporta"
+    ],
     "instruments": [],
-    "periods": [],
+    "periods": [
+      "21st Century"
+    ],
     "nationalities": [
-      "American"
+      "European"
     ],
     "qualities": [],
     "performers": [],
@@ -1011,7 +1015,7 @@
     "wp_id": 1481,
     "title": "Sonata for clarinet, flute and piano",
     "slug": "sonata-for-clarinet-flute-and-piano",
-    "description": "A trio for clarinet, flute and piano, performed live by CreArtBox.",
+    "description": "Maurice Emmanuel (1862–1938) was a French composer and pioneering musicologist whose language drew on ancient Greek modes, folk song and the colors of Impressionism. His Sonate en trio, Op. 11 (1907), for flute, clarinet and piano, unfolds in three movements — a spirited Allegro built on a folk-like theme, a songful Adagio, and a featherlight closing Allegro molto e leggierissimo. Fresh, modal and full of light, it remains one of the most engaging works ever written for this trio.",
     "video_type": "audio",
     "video_url": "https://play.creartbox.nyc/wp-content/uploads/3.EMMANUEL-3.wav",
     "video_id": "",
@@ -1019,7 +1023,9 @@
     "duration": "",
     "release_date": "04/02/2011",
     "original_link": "",
-    "composers": [],
+    "composers": [
+      "Maurice Emmanuel"
+    ],
     "instruments": [
       "Clarinet",
       "Flute",
@@ -1028,7 +1034,9 @@
     "periods": [
       "20th Century"
     ],
-    "nationalities": [],
+    "nationalities": [
+      "European"
+    ],
     "qualities": [
       "Lossless audio"
     ],
