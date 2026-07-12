@@ -8,7 +8,8 @@ import { MediaSection } from "@/components/media-section";
 import { FavoriteButton } from "@/components/favorite-button";
 import { AboutSection } from "@/components/about-section";
 
-const GATE_REQUIRES_LOGIN = true;
+// Everything is freely accessible — no login required to watch/listen.
+const GATE_REQUIRES_LOGIN = false;
 const GATE_REQUIRES_PAYMENT = false;
 
 export async function generateMetadata({

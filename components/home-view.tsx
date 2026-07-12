@@ -10,18 +10,15 @@ import {
 } from "@/lib/concert-utils";
 import { HeroCard, ConcertCard, ConcertRow } from "./concert-cards";
 import { CenturyChips } from "./century-chips";
+import { FeaturedHero } from "./featured-hero";
 
-const CLEF = "𝄞";
-
-export function HomeView({
-  concerts,
-  userName,
-}: {
-  concerts: Concert[];
-  userName: string | null;
-}) {
+export function HomeView({ concerts }: { concerts: Concert[] }) {
   const [category, setCategory] = useState<CenturyKey>("all");
 
+  const featured = useMemo(
+    () => newestConcerts(concerts, 1)[0],
+    [concerts]
+  );
   const newest = useMemo(() => newestConcerts(concerts, 10), [concerts]);
   const sections = useMemo(() => groupByCentury(concerts), [concerts]);
   const filtered = useMemo(() => {
@@ -31,23 +28,13 @@ export function HomeView({
   }, [category, concerts, newest]);
 
   return (
-    <div className="pt-4">
-      {/* Greeting */}
-      <div className="flex items-center px-5 pb-[22px] pt-4">
-        <div className="flex-1">
-          <p className="text-xs text-neutral-400">Welcome</p>
-          <p className="pt-[3px] text-[22px] font-semibold text-white">
-            {userName || "Listener"}
-          </p>
-        </div>
-        <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-gold/[0.12]">
-          <span className="text-[22px] text-gold">{CLEF}</span>
-        </div>
-      </div>
+    <div>
+      {/* Netflix-style featured hero */}
+      {featured && <FeaturedHero concert={featured} />}
 
       {/* New carousel */}
       {newest.length > 0 && (
-        <section className="pb-[30px]">
+        <section className="pb-[30px] pt-6">
           <SectionHeader title="New" sparkles />
           <div className="no-scrollbar flex gap-[14px] overflow-x-auto px-5">
             {newest.map((c) => (

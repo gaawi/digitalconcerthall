@@ -17,6 +17,8 @@ body {
   );
   background-attachment: fixed;
   font-family: theme("fontFamily.sans");
+  /* Allow full-bleed (w-screen) sections without a horizontal scrollbar. */
+  overflow-x: clip;
 }
 
 /* Hide horizontal scrollbars on the iOS-style carousels. */
