@@ -67,6 +67,19 @@ create table if not exists public.memberships (
 create index if not exists memberships_user_idx on public.memberships (user_id);
 
 -- ---------------------------------------------------------------------------
+-- favorites: a user's saved concerts, synced across web / iOS / Android.
+-- (Replaces the web's per-device localStorage list for signed-in users.)
+-- ---------------------------------------------------------------------------
+create table if not exists public.favorites (
+  user_id       uuid not null references auth.users (id) on delete cascade,
+  concert_slug  text not null,
+  created_at    timestamptz not null default now(),
+  primary key (user_id, concert_slug)
+);
+
+create index if not exists favorites_user_idx on public.favorites (user_id);
+
+-- ---------------------------------------------------------------------------
 -- Auto-provision profile + free membership when a user signs up
 -- ---------------------------------------------------------------------------
 create or replace function public.handle_new_user()
@@ -98,6 +111,14 @@ create trigger on_auth_user_created
 alter table public.concerts    enable row level security;
 alter table public.profiles    enable row level security;
 alter table public.memberships enable row level security;
+alter table public.favorites   enable row level security;
+
+-- Users fully manage their own favorites.
+drop policy if exists "manage own favorites" on public.favorites;
+create policy "manage own favorites"
+  on public.favorites for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
 -- Published concerts are readable by everyone (catalog is public, like today).
 drop policy if exists "concerts are publicly readable" on public.concerts;
