@@ -102,7 +102,7 @@ export default async function ConcertPage({
                   {metaBadges.map((b) => (
                     <span
                       key={b.icon + b.text}
-                      className="clamp-1 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-neutral-300 backdrop-blur sm:text-[12px]"
+                      className="clamp-1 border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-neutral-300 backdrop-blur sm:text-[12px]"
                     >
                       {b.text}
                     </span>
@@ -125,7 +125,7 @@ export default async function ConcertPage({
             <ul className="grid grid-cols-1 gap-x-8 pt-3 sm:grid-cols-2">
               {concert.performers.map((p) => (
                 <li key={p} className="flex items-center gap-2 py-1">
-                  <span className="h-1 w-1 rounded-full bg-gold/50" />
+                  <span className="h-1 w-1 bg-gold/50" />
                   <span className="text-[14px] text-white/90 sm:text-[15px]">
                     {p}
                   </span>
@@ -152,7 +152,7 @@ function LockedNotice({
   slug: string;
 }) {
   return (
-    <div className="flex aspect-video w-full flex-col items-center justify-center gap-3 rounded-xl border border-gold/20 bg-ink-800 p-8 text-center">
+    <div className="flex aspect-video w-full flex-col items-center justify-center gap-3 border border-gold/20 bg-ink-800 p-8 text-center">
       <span className="text-4xl text-gold/60">𝄞</span>
       <h2 className="text-lg font-semibold text-white">
         {needsMembership ? "Members-only performance" : "Sign in to watch"}
@@ -165,13 +165,13 @@ function LockedNotice({
       <div className="mt-2 flex gap-3">
         <Link
           href={`/login?next=/title/${slug}`}
-          className="rounded-full border border-white/15 px-5 py-2 text-sm text-neutral-200"
+          className="border border-white/15 px-5 py-2 text-sm text-neutral-200"
         >
           Log in
         </Link>
         <Link
           href={`/register?next=/title/${slug}`}
-          className="rounded-full bg-gold px-5 py-2 text-sm font-medium text-black"
+          className="bg-gold px-5 py-2 text-sm font-medium text-black"
         >
           {needsMembership ? "Become a member" : "Join free"}
         </Link>

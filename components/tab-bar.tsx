@@ -30,13 +30,13 @@ export function TabBar() {
             >
               <Icon
                 className={`h-6 w-6 ${
-                  active ? "text-gold" : "text-neutral-400/60"
-                }`}
+ active ? "text-gold" : "text-neutral-400/60"
+ }`}
               />
               <span
                 className={`text-[10px] ${
-                  active ? "text-gold" : "text-neutral-400/60"
-                }`}
+ active ? "text-gold" : "text-neutral-400/60"
+ }`}
               >
                 {t.label}
               </span>

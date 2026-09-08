@@ -47,7 +47,7 @@ export function SearchView({ concerts }: { concerts: Concert[] }) {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Title, composer, performer, instrument…"
-          className="h-11 w-full rounded-xl border border-white/10 bg-ink-800 pl-11 pr-4 text-[15px] text-white outline-none placeholder:text-neutral-500 focus:border-gold/50"
+          className="h-11 w-full border border-white/10 bg-ink-800 pl-11 pr-4 text-[15px] text-white outline-none placeholder:text-neutral-500 focus:border-gold/50"
         />
       </div>
 

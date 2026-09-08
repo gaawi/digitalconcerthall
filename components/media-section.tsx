@@ -29,7 +29,7 @@ export function MediaSection({ concert }: { concert: Concert }) {
           <div className="relative">
             <VideoPlayer concert={concert} />
             {badge && (
-              <span className="pointer-events-none absolute left-3 top-3 rounded-[6px] bg-black/60 px-[9px] py-1 text-[10px] font-bold text-white">
+              <span className="pointer-events-none absolute left-3 top-3 bg-black/60 px-[9px] py-1 text-[10px] font-bold text-white">
                 {badge}
               </span>
             )}
@@ -39,7 +39,7 @@ export function MediaSection({ concert }: { concert: Concert }) {
         )}
 
         {/* Toggle */}
-        <div className="mt-[14px] flex gap-1 rounded-[12px] border border-gold/10 bg-ink-800 p-1">
+        <div className="mt-[14px] flex gap-1 border border-gold/10 bg-ink-800 p-1">
           <ToggleBtn
             active={mode === "video"}
             onClick={() => setMode("video")}
@@ -62,7 +62,7 @@ export function MediaSection({ concert }: { concert: Concert }) {
     <div className="relative">
       <VideoPlayer concert={concert} />
       {badge && (
-        <span className="pointer-events-none absolute left-3 top-3 rounded-[6px] bg-black/60 px-[9px] py-1 text-[10px] font-bold text-white">
+        <span className="pointer-events-none absolute left-3 top-3 bg-black/60 px-[9px] py-1 text-[10px] font-bold text-white">
           {badge}
         </span>
       )}
@@ -84,9 +84,9 @@ function ToggleBtn({
   return (
     <button
       onClick={onClick}
-      className={`flex h-[38px] flex-1 items-center justify-center gap-[6px] rounded-[9px] text-[13px] transition ${
-        active ? "bg-gold font-semibold text-black" : "text-neutral-400"
-      }`}
+      className={`flex h-[38px] flex-1 items-center justify-center gap-[6px] text-[13px] transition ${
+ active ? "bg-gold font-semibold text-black" : "text-neutral-400"
+ }`}
     >
       {icon === "video" ? (
         <svg viewBox="0 0 24 24" className="h-[13px] w-[13px]" fill="currentColor">

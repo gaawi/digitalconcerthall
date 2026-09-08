@@ -111,7 +111,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md border border-white/10 bg-ink-800 px-3 py-2.5 text-neutral-200 outline-none focus:border-gold-500/60"
+            className="w-full border border-white/10 bg-ink-800 px-3 py-2.5 text-neutral-200 outline-none focus:border-gold-500/60"
           />
         </div>
 
@@ -126,7 +126,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
               minLength={6}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-md border border-white/10 bg-ink-800 px-3 py-2.5 text-neutral-200 outline-none focus:border-gold-500/60"
+              className="w-full border border-white/10 bg-ink-800 px-3 py-2.5 text-neutral-200 outline-none focus:border-gold-500/60"
             />
           </div>
         )}
@@ -137,7 +137,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-full bg-gold-500 py-2.5 font-medium text-ink-950 transition hover:bg-gold-400 disabled:opacity-50"
+          className="w-full bg-gold-500 py-2.5 font-medium text-ink-950 transition hover:bg-gold-400 disabled:opacity-50"
         >
           {loading ? "…" : copy.cta}
         </button>
@@ -153,7 +153,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
           <button
             type="button"
             onClick={signInWithGoogle}
-            className="flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
+            className="flex w-full items-center justify-center gap-3 border border-white/15 bg-white/5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z" />

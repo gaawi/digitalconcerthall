@@ -12,7 +12,7 @@ export function HeroCard({ concert }: { concert: Concert }) {
       href={`/title/${concert.slug}`}
       className="group block w-[240px] shrink-0 sm:w-[340px] lg:w-[400px]"
     >
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-ink-800 shadow-lg shadow-black/30 ring-0 ring-gold/50 transition duration-300 group-hover:scale-[1.04] group-hover:ring-2">
+      <div className="relative aspect-video w-full overflow-hidden bg-ink-800 shadow-lg shadow-black/30 ring-0 ring-gold/50 transition duration-300 group-hover:scale-[1.04] group-hover:ring-2">
         {concert.thumbnail_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -26,7 +26,7 @@ export function HeroCard({ concert }: { concert: Concert }) {
         )}
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/70 to-transparent" />
         {badge && (
-          <span className="absolute right-2 top-2 rounded-[5px] bg-black/60 px-[7px] py-[3px] text-[10px] font-bold text-white">
+          <span className="absolute right-2 top-2 bg-black/60 px-[7px] py-[3px] text-[10px] font-bold text-white">
             {badge}
           </span>
         )}
@@ -56,7 +56,7 @@ export function ConcertCard({ concert }: { concert: Concert }) {
       href={`/title/${concert.slug}`}
       className="group block w-[200px] shrink-0 sm:w-[280px] lg:w-[320px]"
     >
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-ink-800 shadow-lg shadow-black/30 ring-0 ring-gold/50 transition duration-300 group-hover:scale-[1.04] group-hover:ring-2">
+      <div className="relative aspect-video w-full overflow-hidden bg-ink-800 shadow-lg shadow-black/30 ring-0 ring-gold/50 transition duration-300 group-hover:scale-[1.04] group-hover:ring-2">
         {concert.thumbnail_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -69,7 +69,7 @@ export function ConcertCard({ concert }: { concert: Concert }) {
           <Placeholder />
         )}
         {badge && (
-          <span className="absolute bottom-[6px] right-[6px] rounded-[5px] bg-black/[0.65] px-[6px] py-[3px] text-[10px] font-bold text-white">
+          <span className="absolute bottom-[6px] right-[6px] bg-black/[0.65] px-[6px] py-[3px] text-[10px] font-bold text-white">
             {badge}
           </span>
         )}
@@ -91,9 +91,9 @@ export function ConcertRow({ concert }: { concert: Concert }) {
   return (
     <Link
       href={`/title/${concert.slug}`}
-      className="flex items-center gap-[14px] rounded-[14px] border border-gold/[0.07] bg-ink-700 p-[14px]"
+      className="flex items-center gap-[14px] border border-gold/[0.07] bg-ink-700 p-[14px]"
     >
-      <div className="h-[76px] w-[76px] shrink-0 overflow-hidden rounded-[10px] bg-ink-800">
+      <div className="h-[76px] w-[76px] shrink-0 overflow-hidden bg-ink-800">
         {concert.thumbnail_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img

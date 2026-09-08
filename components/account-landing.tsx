@@ -63,7 +63,7 @@ export function AccountLanding() {
       <div className="mt-8 space-y-3">
         <button
           onClick={google}
-          className="flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+          className="flex w-full items-center justify-center gap-3 border border-white/15 bg-white/5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
         >
           <svg viewBox="0 0 24 24" className="h-5 w-5">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -75,7 +75,7 @@ export function AccountLanding() {
         </button>
         <Link
           href="/register"
-          className="flex w-full items-center justify-center rounded-full bg-gold py-3 text-sm font-semibold text-black transition hover:bg-gold-light"
+          className="flex w-full items-center justify-center bg-gold py-3 text-sm font-semibold text-black transition hover:bg-gold-light"
         >
           Sign up with email
         </Link>
@@ -94,7 +94,7 @@ export function AccountLanding() {
       <div className="mt-12 space-y-5 border-t border-white/5 pt-8">
         {BENEFITS.map((b) => (
           <div key={b.title} className="flex gap-4">
-            <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gold/10 text-gold">
+            <div className="flex h-10 w-10 flex-none items-center justify-center bg-gold/10 text-gold">
               <BenefitIcon name={b.icon} />
             </div>
             <div>

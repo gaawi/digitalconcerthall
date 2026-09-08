@@ -30,7 +30,7 @@ export function VideoPlayer({ concert }: { concert: Concert }) {
   }, [concert.video_type, concert.video_url]);
 
   const frame =
-    "aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black shadow-2xl";
+    "aspect-video w-full overflow-hidden  border border-white/10 bg-black shadow-2xl";
 
   if (concert.video_type === "vimeo" && concert.video_id) {
     return (
@@ -62,7 +62,7 @@ export function VideoPlayer({ concert }: { concert: Concert }) {
 
   if (concert.video_type === "audio") {
     return (
-      <div className="rounded-xl border border-white/10 bg-ink-800 p-8">
+      <div className="border border-white/10 bg-ink-800 p-8">
         <div className="mb-6 flex items-center gap-3 text-gold-400">
           <span className="font-serif text-3xl">♪</span>
           <span className="text-sm uppercase tracking-widest text-neutral-500">
@@ -97,7 +97,7 @@ export function VideoPlayer({ concert }: { concert: Concert }) {
   }
 
   return (
-    <div className="flex aspect-video w-full items-center justify-center rounded-xl border border-white/10 bg-ink-800 text-neutral-500">
+    <div className="flex aspect-video w-full items-center justify-center border border-white/10 bg-ink-800 text-neutral-500">
       Video source not yet available.
     </div>
   );

@@ -15,7 +15,7 @@ export function ComposerCard({
   return (
     <Link
       href={`/search?composer=${encodeURIComponent(name)}`}
-      className="block overflow-hidden rounded-[14px] border border-gold/[0.08] bg-ink-700"
+      className="block overflow-hidden border border-gold/[0.08] bg-ink-700"
     >
       <div className="relative aspect-[16/10] bg-ink-800">
         {!failed ? (

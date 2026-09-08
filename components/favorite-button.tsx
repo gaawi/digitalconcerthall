@@ -36,7 +36,7 @@ export function FavoriteButton({
       aria-label={fav ? "Remove from favorites" : "Add to favorites"}
       className={
         framed
-          ? "flex h-[50px] w-[50px] items-center justify-center rounded-[13px] border border-gold/25 text-neutral-400"
+          ? "flex h-[50px] w-[50px] items-center justify-center  border border-gold/25 text-neutral-400"
           : "text-neutral-400"
       }
     >

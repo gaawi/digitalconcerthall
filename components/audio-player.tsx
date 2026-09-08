@@ -11,7 +11,7 @@ function fmt(s: number) {
 
 function LosslessBadge() {
   return (
-    <span className="inline-flex items-center gap-1 rounded bg-gold/10 px-[7px] py-[3px] text-[7.5px] font-bold tracking-[0.6px] text-gold/75">
+    <span className="inline-flex items-center gap-1 bg-gold/10 px-[7px] py-[3px] text-[7.5px] font-bold tracking-[0.6px] text-gold/75">
       <svg viewBox="0 0 24 24" className="h-2 w-2" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
         <path d="M3 12h2M8 7v10M13 4v16M18 8v8M21 11v2" />
       </svg>
@@ -26,7 +26,7 @@ function Bars({ playing }: { playing: boolean }) {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="w-[3px] rounded-sm bg-gold"
+          className="w-[3px] bg-gold"
           style={{
             height: 5,
             animation: playing
@@ -110,7 +110,7 @@ export function AudioPlayer({
         }
       >
         <div
-          className={`${art} shrink-0 overflow-hidden rounded-2xl bg-ink-800 shadow-2xl`}
+          className={`${art} shrink-0 overflow-hidden bg-ink-800 shadow-2xl`}
         >
           {concert.thumbnail_url ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -151,9 +151,9 @@ export function AudioPlayer({
           onClick={seek}
           className="group flex h-4 cursor-pointer items-center"
         >
-          <div className="relative h-1 w-full rounded-full bg-white/12">
+          <div className="relative h-1 w-full bg-white/12">
             <div
-              className="absolute inset-y-0 left-0 rounded-full bg-gold"
+              className="absolute inset-y-0 left-0 bg-gold"
               style={{ width: `${progress * 100}%` }}
             />
           </div>
@@ -167,8 +167,8 @@ export function AudioPlayer({
       {/* Controls */}
       <div
         className={`flex items-center justify-center ${
-          variant === "hero" ? "gap-14 pt-6" : "gap-8 pt-4"
-        }`}
+ variant === "hero" ? "gap-14 pt-6" : "gap-8 pt-4"
+ }`}
       >
         <button onClick={prev} aria-label="Previous" className="text-white disabled:opacity-30" disabled={index === 0}>
           <svg viewBox="0 0 24 24" className={variant === "hero" ? "h-7 w-7" : "h-[18px] w-[18px]"} fill="currentColor">
@@ -178,9 +178,9 @@ export function AudioPlayer({
         <button
           onClick={toggle}
           aria-label="Play/Pause"
-          className={`flex items-center justify-center rounded-full bg-gold text-black shadow-lg shadow-gold/30 ${
-            variant === "hero" ? "h-[68px] w-[68px]" : "h-11 w-11"
-          }`}
+          className={`flex items-center justify-center bg-gold text-black shadow-lg shadow-gold/30 ${
+ variant === "hero" ? "h-[68px] w-[68px]" : "h-11 w-11"
+ }`}
         >
           {playing ? (
             <svg viewBox="0 0 24 24" className={variant === "hero" ? "h-7 w-7" : "h-4 w-4"} fill="currentColor">
@@ -212,7 +212,7 @@ export function AudioPlayer({
               TRACKLIST
             </span>
           </div>
-          <div className="overflow-hidden rounded-[14px] border border-gold/[0.06] bg-ink-700">
+          <div className="overflow-hidden border border-gold/[0.06] bg-ink-700">
             {tracks.map((t, i) => {
               const currentRow = i === index;
               return (
@@ -238,8 +238,8 @@ export function AudioPlayer({
                   </span>
                   <span
                     className={`clamp-1 flex-1 text-[14px] ${
-                      currentRow ? "text-gold" : "text-white"
-                    }`}
+ currentRow ? "text-gold" : "text-white"
+ }`}
                   >
                     {t.title}
                   </span>
@@ -251,16 +251,16 @@ export function AudioPlayer({
       )}
 
       <style jsx global>{`
-        @keyframes cabbars {
-          0%,
-          100% {
-            height: 4px;
-          }
-          50% {
-            height: 14px;
-          }
-        }
-      `}</style>
+ @keyframes cabbars {
+ 0%,
+ 100% {
+ height: 4px;
+ }
+ 50% {
+ height: 14px;
+ }
+ }
+ `}</style>
     </div>
   );
 }

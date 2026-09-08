@@ -73,11 +73,11 @@ export function CenturyChips({
           <button
             key={c.key}
             onClick={() => onSelect(c.key)}
-            className={`flex h-9 shrink-0 items-center gap-[6px] rounded-[18px] px-[14px] text-[13px] transition ${
-              active
-                ? "bg-gold font-semibold text-black"
-                : "border border-gold/20 bg-ink-800 text-neutral-400"
-            }`}
+            className={`flex h-9 shrink-0 items-center gap-[6px] px-[14px] text-[13px] transition ${
+ active
+ ? "bg-gold font-semibold text-black"
+ : "border border-gold/20 bg-ink-800 text-neutral-400"
+ }`}
           >
             <ChipIcon name={c.icon} />
             {c.label}

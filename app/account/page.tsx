@@ -24,7 +24,7 @@ export default async function ProfilePage() {
     <div className="mx-auto max-w-2xl px-5 pt-8">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gold/[0.12] text-2xl font-semibold uppercase text-gold">
+        <div className="flex h-16 w-16 items-center justify-center bg-gold/[0.12] text-2xl font-semibold uppercase text-gold">
           {name[0]}
         </div>
         <div className="min-w-0">
@@ -34,7 +34,7 @@ export default async function ProfilePage() {
       </div>
 
       {/* Membership */}
-      <div className="mt-8 rounded-2xl border border-gold/15 bg-gradient-to-br from-gold/[0.08] to-transparent p-5">
+      <div className="mt-8 border border-gold/15 bg-gradient-to-br from-gold/[0.08] to-transparent p-5">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] text-gold">
@@ -44,7 +44,7 @@ export default async function ProfilePage() {
               {user.isMember ? "Free Member" : "Free account"}
             </p>
           </div>
-          <span className="rounded-full bg-gold/15 px-3 py-1 text-xs font-medium text-gold">
+          <span className="bg-gold/15 px-3 py-1 text-xs font-medium text-gold">
             Active
           </span>
         </div>
@@ -54,7 +54,7 @@ export default async function ProfilePage() {
       </div>
 
       {/* Menu */}
-      <div className="mt-6 overflow-hidden rounded-2xl border border-white/5 bg-ink-700">
+      <div className="mt-6 overflow-hidden border border-white/5 bg-ink-700">
         <Row href="/playlists" label="My Playlists" sub="Saved concerts & favorites" />
         <Divider />
         <Row href="/" label="Browse the collection" sub="54 performances" />
@@ -74,7 +74,7 @@ export default async function ProfilePage() {
       </div>
 
       {/* Support */}
-      <div className="mt-6 overflow-hidden rounded-2xl border border-white/5 bg-ink-700">
+      <div className="mt-6 overflow-hidden border border-white/5 bg-ink-700">
         <Row
           href="https://creartbox.nyc"
           external

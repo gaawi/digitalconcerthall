@@ -42,8 +42,8 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
             src={s.thumbnail_url}
             alt=""
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ${
-              n === i ? "opacity-100" : "opacity-0"
-            } ${n === i ? "animate-kenburns" : ""}`}
+ n === i ? "opacity-100" : "opacity-0"
+ } ${n === i ? "animate-kenburns" : ""}`}
           />
         ))}
 
@@ -59,7 +59,7 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
               type="button"
               aria-label="Previous"
               onClick={() => setI((n) => (n - 1 + slides.length) % slides.length)}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-papel/20 bg-sala/50 text-papel backdrop-blur transition hover:border-acento/60 hover:text-acento"
+              className="flex h-11 w-11 items-center justify-center border border-papel/20 bg-sala/50 text-papel backdrop-blur transition hover:border-acento/60 hover:text-acento"
             >
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m15 6-6 6 6 6" />
@@ -69,7 +69,7 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
               type="button"
               aria-label="Next"
               onClick={() => setI((n) => (n + 1) % slides.length)}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-papel/20 bg-sala/50 text-papel backdrop-blur transition hover:border-acento/60 hover:text-acento"
+              className="flex h-11 w-11 items-center justify-center border border-papel/20 bg-sala/50 text-papel backdrop-blur transition hover:border-acento/60 hover:text-acento"
             >
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 6 6 6-6 6" />
@@ -78,9 +78,18 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
           </div>
         )}
 
-        {/* Brand */}
-        <div className="absolute inset-x-0 top-0 px-5 pt-4 sm:px-10">
-          <Logo className="h-8 sm:h-10" />
+        {/* Brand lockup: official wordmark + amber rule + the descriptor,
+            set in the display face. */}
+        <div className="absolute inset-x-0 top-0 px-5 pt-5 sm:px-10 sm:pt-6">
+          <div className="flex flex-col items-start gap-2">
+            <Logo className="h-7 sm:h-9" />
+            <div className="flex items-center gap-2.5">
+              <span className="h-[2px] w-7 flex-none bg-acento sm:w-9" />
+              <span className="font-display text-[11px] tracking-[0.14em] text-papel-medio sm:text-[13px]">
+                Digital Concert Hall
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Content (re-animates per slide) */}
@@ -122,7 +131,7 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
             <div className="flex items-center gap-3 pt-6">
               <Link
                 href={`/title/${active.slug}`}
-                className="flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-semibold text-black transition hover:bg-gold-light sm:text-base"
+                className="flex items-center gap-2 bg-gold px-7 py-3 text-sm font-semibold text-black transition hover:bg-gold-light sm:text-base"
               >
                 <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
                   <path d="M6 4l14 8-14 8z" />
@@ -131,7 +140,7 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
               </Link>
               <Link
                 href={`/title/${active.slug}`}
-                className="flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10 sm:text-base"
+                className="flex items-center gap-2 border border-white/25 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10 sm:text-base"
               >
                 <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="9" />
@@ -149,9 +158,9 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
                     key={s.slug}
                     onClick={() => setI(n)}
                     aria-label={`Slide ${n + 1}`}
-                    className={`h-1.5 rounded-full transition-all ${
-                      n === i ? "w-7 bg-gold" : "w-3 bg-white/30 hover:bg-white/50"
-                    }`}
+                    className={`h-1.5 transition-all ${
+ n === i ? "w-7 bg-gold" : "w-3 bg-white/30 hover:bg-white/50"
+ }`}
                   />
                 ))}
               </div>

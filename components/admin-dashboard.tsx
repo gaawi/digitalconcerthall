@@ -214,13 +214,13 @@ export function AdminDashboard({ taxonomies }: { taxonomies: Taxonomies }) {
             <button
               onClick={save}
               disabled={saving}
-              className="rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-black disabled:opacity-50"
+              className="bg-gold px-6 py-2.5 text-sm font-semibold text-black disabled:opacity-50"
             >
               {saving ? "Saving…" : "Save concert"}
             </button>
             <button
               onClick={() => setDraft(null)}
-              className="rounded-full border border-white/15 px-6 py-2.5 text-sm text-neutral-300"
+              className="border border-white/15 px-6 py-2.5 text-sm text-neutral-300"
             >
               Cancel
             </button>
@@ -237,7 +237,7 @@ export function AdminDashboard({ taxonomies }: { taxonomies: Taxonomies }) {
         <h1 className="text-[34px] font-bold text-white">Editor</h1>
         <button
           onClick={() => setDraft({ ...EMPTY })}
-          className="rounded-full bg-gold px-5 py-2 text-sm font-semibold text-black"
+          className="bg-gold px-5 py-2 text-sm font-semibold text-black"
         >
           + Add concert
         </button>
@@ -249,7 +249,7 @@ export function AdminDashboard({ taxonomies }: { taxonomies: Taxonomies }) {
       {loading ? (
         <p className="pt-10 text-center text-neutral-500">Loading…</p>
       ) : (
-        <div className="overflow-hidden rounded-[14px] border border-gold/[0.08] bg-ink-700">
+        <div className="overflow-hidden border border-gold/[0.08] bg-ink-700">
           {concerts.map((c) => (
             <div
               key={c.slug}
@@ -265,7 +265,7 @@ export function AdminDashboard({ taxonomies }: { taxonomies: Taxonomies }) {
                 </p>
               </div>
               {!c.published && (
-                <span className="rounded bg-white/10 px-2 py-0.5 text-[10px] text-neutral-400">
+                <span className="bg-white/10 px-2 py-0.5 text-[10px] text-neutral-400">
                   draft
                 </span>
               )}
@@ -292,7 +292,7 @@ export function AdminDashboard({ taxonomies }: { taxonomies: Taxonomies }) {
 }
 
 const inputCls =
-  "w-full rounded-md border border-white/10 bg-ink-800 px-3 py-2.5 text-[14px] text-white outline-none focus:border-gold/50";
+  "w-full  border border-white/10 bg-ink-800 px-3 py-2.5 text-[14px] text-white outline-none focus:border-gold/50";
 
 function Field({
   label,
@@ -360,7 +360,7 @@ function TagField({
           {values.map((v) => (
             <span
               key={v}
-              className="flex items-center gap-1 rounded-full bg-gold/15 px-3 py-1 text-[12px] text-gold"
+              className="flex items-center gap-1 bg-gold/15 px-3 py-1 text-[12px] text-gold"
             >
               {v}
               <button
@@ -395,7 +395,7 @@ function TagField({
         <button
           type="button"
           onClick={() => add(text)}
-          className="shrink-0 rounded-md border border-gold/40 px-4 text-sm text-gold"
+          className="shrink-0 border border-gold/40 px-4 text-sm text-gold"
         >
           Add
         </button>
@@ -414,7 +414,7 @@ function TagField({
               key={s}
               type="button"
               onClick={() => add(s)}
-              className="rounded-full border border-white/10 px-2.5 py-0.5 text-[11px] text-neutral-400 hover:border-gold/40 hover:text-gold"
+              className="border border-white/10 px-2.5 py-0.5 text-[11px] text-neutral-400 hover:border-gold/40 hover:text-gold"
             >
               + {s}
             </button>

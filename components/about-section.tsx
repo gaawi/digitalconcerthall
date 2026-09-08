@@ -12,8 +12,8 @@ export function AboutSection({ text }: { text: string }) {
       </p>
       <p
         className={`pt-[10px] text-[14px] font-light leading-relaxed text-white/85 ${
-          expanded ? "" : "clamp-4"
-        }`}
+ expanded ? "" : "clamp-4"
+ }`}
       >
         {text}
       </p>
