@@ -1,5 +1,31 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Palette and type from the official CreArtBox brand study (Guidelines v1.1).
+ * Semantic tokens keep their Spanish brand names; the legacy `ink`/`gold`/
+ * `neutral` scales are remapped onto them so the whole app inherits the brand.
+ *
+ *   sala   #070706  the darkened hall — page background
+ *   foso   #100F0E  the pit — surfaces / panels
+ *   filete #2B2825  hairline rules & borders
+ *   papel  #F2EFE8  paper — primary text on dark
+ *   dim    #9C968C  muted text
+ *   acento #FFC403  the signal — amber accent
+ */
+const brand = {
+  sala: "#070706",
+  foso: "#100F0E",
+  filete: "#2B2825",
+  fileteAlto: "#3D3934",
+  papel: "#F2EFE8",
+  papelMedio: "#C9C3B9",
+  papelTenue: "#8A847A",
+  papelMudo: "#6B655D",
+  dim: "#9C968C",
+  acento: "#FFC403",
+  sobreAcento: "#0B0705",
+};
+
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -9,38 +35,61 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Exact palette from the iOS app's Theme.swift.
+        // Semantic brand tokens
+        sala: brand.sala,
+        foso: brand.foso,
+        filete: { DEFAULT: brand.filete, alto: brand.fileteAlto },
+        papel: {
+          DEFAULT: brand.papel,
+          medio: brand.papelMedio,
+          tenue: brand.papelTenue,
+          mudo: brand.papelMudo,
+        },
+        acento: brand.acento,
+
+        // "Paper", not pure white — every text-white picks up the brand tone.
+        white: brand.papel,
+
+        // Legacy scales remapped to the brand
         ink: {
-          950: "#0a0812", // gradient edge  rgb(0.04,0.03,0.07)
-          900: "#0f0d17", // background     rgb(0.06,0.05,0.09)
-          850: "#120d1c", // gradient mid   rgb(0.07,0.05,0.11)
-          800: "#1c1a24", // surface        rgb(0.11,0.10,0.14)
-          700: "#1f1c29", // cardBackground rgb(0.12,0.11,0.16)
-          600: "#26242e", // surfaceElevated rgb(0.15,0.14,0.18)
+          950: brand.sala,
+          900: brand.sala,
+          850: brand.sobreAcento,
+          800: brand.foso,
+          700: "#1C1A19",
+          600: brand.filete,
         },
         gold: {
-          light: "#f2d98c", // goldLight rgb(0.95,0.85,0.55)
-          DEFAULT: "#d9b85e", // gold    rgb(0.85,0.72,0.37)
-          400: "#d9b85e",
-          500: "#d9b85e",
-          dim: "#bf9e45", // goldDim     rgb(0.75,0.62,0.27)
+          light: "#FFD84D",
+          DEFAULT: brand.acento,
+          400: brand.acento,
+          500: brand.acento,
+          dim: "#D9A502",
+        },
+        neutral: {
+          100: brand.papel,
+          200: brand.papel,
+          300: brand.papelMedio,
+          400: brand.dim,
+          500: brand.papelTenue,
+          600: brand.papelMudo,
+          700: brand.fileteAlto,
+          800: brand.filete,
+          900: brand.foso,
         },
       },
       fontFamily: {
-        sans: [
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "SF Pro Text",
-          "SF Pro Display",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "sans-serif",
-        ],
+        // Body text: Archivo. Display/headings: Literata.
+        sans: ["var(--font-archivo)", "Helvetica", "Arial", "sans-serif"],
+        serif: ["var(--font-literata)", "Georgia", "serif"],
+        display: ["var(--font-literata)", "Georgia", "serif"],
       },
       maxWidth: {
-        content: "1280px",
+        content: "1120px", // brand --ancho-max
+        medida: "36em", // brand --medida (reading measure)
+      },
+      spacing: {
+        secc: "clamp(64px, 9vw, 120px)", // brand --aire-secc
       },
     },
   },

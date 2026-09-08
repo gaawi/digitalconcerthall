@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { createClient, supabaseConfigured } from "@/lib/supabase/client";
-import { Logo } from "./logo";
+import { LogoStacked } from "./logo";
 
 const BENEFITS = [
   {
@@ -49,7 +49,7 @@ export function AccountLanding() {
   return (
     <div className="mx-auto max-w-md px-5 pt-10">
       <div className="flex flex-col items-center text-center">
-        <Logo className="h-12" />
+        <LogoStacked className="h-28" />
         <h1 className="mt-8 text-2xl font-bold text-white sm:text-3xl">
           Your seat at the concert hall
         </h1>

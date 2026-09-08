@@ -51,16 +51,17 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/45 to-ink-900/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/25 to-transparent" />
 
-        {/* Prev / next arrows (desktop) */}
+        {/* Prev / next — paired bottom-right so they never collide with the
+            headline column on the left. */}
         {slides.length > 1 && (
-          <>
+          <div className="absolute bottom-14 right-5 z-10 hidden gap-2 sm:flex sm:bottom-16 sm:right-10 lg:bottom-20">
             <button
               type="button"
               aria-label="Previous"
               onClick={() => setI((n) => (n - 1 + slides.length) % slides.length)}
-              className="absolute left-3 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-white backdrop-blur transition hover:bg-ink-950/80 sm:flex"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-papel/20 bg-sala/50 text-papel backdrop-blur transition hover:border-acento/60 hover:text-acento"
             >
-              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m15 6-6 6 6 6" />
               </svg>
             </button>
@@ -68,18 +69,18 @@ export function FeaturedHero({ concerts }: { concerts: Concert[] }) {
               type="button"
               aria-label="Next"
               onClick={() => setI((n) => (n + 1) % slides.length)}
-              className="absolute right-3 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-white backdrop-blur transition hover:bg-ink-950/80 sm:flex"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-papel/20 bg-sala/50 text-papel backdrop-blur transition hover:border-acento/60 hover:text-acento"
             >
-              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 6 6 6-6 6" />
               </svg>
             </button>
-          </>
+          </div>
         )}
 
         {/* Brand */}
         <div className="absolute inset-x-0 top-0 px-5 pt-4 sm:px-10">
-          <Logo className="h-9 sm:h-11" />
+          <Logo className="h-8 sm:h-10" />
         </div>
 
         {/* Content (re-animates per slide) */}

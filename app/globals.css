@@ -7,18 +7,31 @@
 }
 
 body {
-  @apply bg-ink-900 text-white antialiased;
-  /* Matches Theme.gradientBackground: topLeading -> bottomTrailing */
+  @apply bg-sala text-papel antialiased;
+  /* "La sala está a oscuras" — the darkened hall, with a faint warm lift. */
   background-image: linear-gradient(
-    to bottom right,
-    #0a0812 0%,
-    #120d1c 50%,
-    #0a0812 100%
+    to bottom,
+    #070706 0%,
+    #100f0e 55%,
+    #070706 100%
   );
   background-attachment: fixed;
   font-family: theme("fontFamily.sans");
   /* Allow full-bleed (w-screen) sections without a horizontal scrollbar. */
   overflow-x: clip;
+}
+
+/* Display type (Literata) for headings, per the brand study. */
+h1,
+h2,
+h3 {
+  font-family: theme("fontFamily.display");
+  letter-spacing: -0.01em;
+}
+
+/* Brand eyebrow: uppercase, wide tracking, muted paper. */
+.eyebrow {
+  @apply text-[11px] uppercase tracking-[0.18em] text-papel-tenue;
 }
 
 /* Hide horizontal scrollbars on the iOS-style carousels. */
