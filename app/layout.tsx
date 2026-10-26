@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Literata } from "next/font/google";
 import "./globals.css";
 import { TabBar } from "@/components/tab-bar";
+import { SiteFooter } from "@/components/site-footer";
 
 // Official CreArtBox typefaces: Archivo for text, Literata for display.
 const archivo = Archivo({
@@ -32,7 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${archivo.variable} ${literata.variable}`}>
       <body className="min-h-screen">
-        <main className="mx-auto max-w-content pb-24">{children}</main>
+        <main className="mx-auto max-w-content pb-10">{children}</main>
+        <div className="pb-24">
+          <SiteFooter />
+        </div>
         <TabBar />
       </body>
     </html>
