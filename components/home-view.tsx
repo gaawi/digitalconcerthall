@@ -13,10 +13,18 @@ import { CenturyChips } from "./century-chips";
 import { FeaturedHero } from "./featured-hero";
 import { Carousel } from "./carousel";
 
+const LEAD_FEATURED_SLUG = "robert-schumann-cuarteto-op-47";
+
 export function HomeView({ concerts }: { concerts: Concert[] }) {
   const [category, setCategory] = useState<CenturyKey>("all");
 
-  const featured = useMemo(() => newestConcerts(concerts, 6), [concerts]);
+  const featured = useMemo(() => {
+    const lead = concerts.find((concert) => concert.slug === LEAD_FEATURED_SLUG);
+    if (!lead) return newestConcerts(concerts, 6);
+
+    const remaining = concerts.filter((concert) => concert.slug !== lead.slug);
+    return [lead, ...newestConcerts(remaining, 5)];
+  }, [concerts]);
   const newest = useMemo(() => newestConcerts(concerts, 10), [concerts]);
   const sections = useMemo(() => groupByCentury(concerts), [concerts]);
   const filtered = useMemo(() => {
